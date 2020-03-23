@@ -15,7 +15,7 @@ all: $(PROGS)
 SYS_SH_OBJS:=
 
 user_prog: $(SYS_SH_OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS) user_space_prog.c
 
 %.o: %.c
 	$(COMPILE_DEBUG)$(CC) $(CFLAGS) -c -o $@ $<

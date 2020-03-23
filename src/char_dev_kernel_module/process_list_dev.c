@@ -154,9 +154,9 @@ static char* get_process_state_str(int state_num) {
         case TASK_UNINTERRUPTIBLE:
             return "TASK_UNINTERRUPTIBLE";
         case __TASK_STOPPED:
-            return "__TASK_STOPPED";
+            return "TASK_STOPPED";
         case __TASK_TRACED:
-            return "__TASK_TRACED";
+            return "TASK_TRACED";
         case EXIT_DEAD:
             return "EXIT_DEAD";
         case EXIT_ZOMBIE:
@@ -177,18 +177,29 @@ static char* get_process_state_str(int state_num) {
             return "TASK_NEW";
         case TASK_STATE_MAX:
             return "TASK_STATE_MAX";
-        case TASK_KILLABLE:
-            return "TASK_KILLABLE";
-        case TASK_STOPPED:
-            return "TASK_STOPPED";
-        case TASK_TRACED:
-            return "TASK_TRACED";
-        case TASK_IDLE:
-            return "TASK_IDLE";
-        case TASK_NORMAL:
-            return "TASK_NORMAL";
-        case TASK_REPORT:
-            return "TASK_REPORT";
+        case (TASK_WAKEKILL | TASK_UNINTERRUPTIBLE):
+            return "TASK_WAKEKILL,TASK_UNINTERRUPTIBLE";
+        case (TASK_WAKEKILL | __TASK_STOPPED):
+            return "TASK_WAKEKILL,TASK_STOPPED";
+        case (TASK_WAKEKILL | __TASK_TRACED):
+            return "TASK_WAKEKILL,TASK_TRACED";
+        case (TASK_UNINTERRUPTIBLE | TASK_NOLOAD):
+            return "TASK_UNINTERRUPTIBLE,TASK_NOLOAD";
+        case (TASK_INTERRUPTIBLE | TASK_UNINTERRUPTIBLE):
+            return "TASK_INTERRUPTIBLE,TASK_UNINTERRUPTIBLE";
+
+        // case TASK_KILLABLE:
+        //     return "TASK_KILLABLE";
+        // case TASK_STOPPED:
+        //     return "TASK_STOPPED";
+        // case TASK_TRACED:
+        //     return "TASK_TRACED";
+        // case TASK_IDLE:
+        //     return "TASK_IDLE";
+        // case TASK_NORMAL:
+        //     return "TASK_NORMAL";
+        // case TASK_REPORT:
+        //     return "TASK_REPORT";
     }
     return "N/A";
 }
