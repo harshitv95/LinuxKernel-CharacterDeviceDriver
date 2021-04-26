@@ -1,4 +1,4 @@
-Finished implementing the kernel module (char_dev_kernel_module), and a user space program (user_space_program).
+Implemented the kernel module (char_dev_kernel_module), and a user space program (user_space_program).
 Both these directories include a Makefile, so to compile, just go to the respective directory and fire the command 'make'
 
 Instructions to compile and run:
